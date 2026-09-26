@@ -13,7 +13,7 @@
         "title": "purrductive",
         "label": "cat",
         "width": 300,
-        "height": 160,
+        "height": 200,
         "transparent": true,
         "decorations": false,
         "alwaysOnTop": true,

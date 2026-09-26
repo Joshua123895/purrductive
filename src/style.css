@@ -1,0 +1,18 @@
+html {
+    background: transparent;
+}
+
+body {
+    margin: 0;
+    background: transparent;
+    /* overflow: hidden; */
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+.cat {
+    position: absolute;
+    bottom: 0;
+}
