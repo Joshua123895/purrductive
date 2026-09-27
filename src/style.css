@@ -1,18 +1,18 @@
-html {
+html, body {
+    margin: 0;
+    height: 100%;
     background: transparent;
+    overflow: hidden;
 }
 
 body {
-    margin: 0;
-    background: transparent;
-    /* overflow: hidden; */
-}
-
-img {
-    image-rendering: pixelated;
+    /* background-color: rgba(255, 0, 0, 0.2); */
 }
 
 .cat {
     position: absolute;
     bottom: 0;
-}
+    left: 0;
+    image-rendering: pixelated;
+    border: 2px solid red;
+} 

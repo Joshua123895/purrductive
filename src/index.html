@@ -1,10 +1,16 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <title>Purrductive</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <img class="cat" src="assets/cat/orange/sit.png">
-  <script src="main.js"></script>
+  <div id="cat" class="cat" role="img" aria-label="Your cat"></div>
+
+  <!-- order matters: settings first, then the player, then the window -->
+  <script src="settings.js" defer></script>
+  <script src="player.js" defer></script>
+  <script src="window.js" defer></script>
 </body>
 </html>

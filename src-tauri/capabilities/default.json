@@ -7,6 +7,9 @@
     "core:default",
     "opener:default",
     "core:window:allow-set-position",
-    "core:window:allow-current-monitor"
+    "core:window:allow-set-size",
+    "core:window:allow-current-monitor",
+    "core:window:allow-cursor-position",
+    "core:window:allow-set-ignore-cursor-events"
   ]
 }
