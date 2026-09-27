@@ -17,7 +17,7 @@ let frame = 0;      // which page
 let queue = [];     // flipbooks waiting to play
 let lastFrameTime = 0;
 let lastTime = 0;
-let x = 200;        // cat position from the left
+let x = 0;        // cat position from the left
 let dir = 1;        // 1 = facing right, -1 = facing left
 
 // --- GPS: find the path between two states, via 'sit' if needed ---
