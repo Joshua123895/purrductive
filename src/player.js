@@ -17,7 +17,7 @@ let frame = 0;      // which page
 let queue = [];     // flipbooks waiting to play
 let lastFrameTime = 0;
 let lastTime = 0;
-let x = 0;        // cat position from the left
+let x = 0 * SCALE;        // cat position from the left (-12)
 let dir = 1;        // 1 = facing right, -1 = facing left
 
 // --- GPS: find the path between two states, via 'sit' if needed ---
@@ -37,7 +37,13 @@ function show(name) {
 	pose = current.loop ? name : (queue[0] ?? pose);
 	cat.style.backgroundImage = `url(${current.src})`;
 	cat.style.backgroundSize = `${current.frames * FW}px ${FH}px`;
-	cat.style.backgroundPosition = '0 0';
+	draw();
+}
+
+// --- put the current page on screen (backwards if the flipbook says so) ---
+function draw() {
+	const page = current.reverse ? current.frames - 1 - frame : frame;
+	cat.style.backgroundPosition = `${-page * FW}px 0`;
 }
 
 // --- heartbeat: runs ~60 times per second ---
@@ -48,13 +54,14 @@ function tick(t) {
 	// next page, if enough time has passed
 	if (t - lastFrameTime >= 1000 / current.fps) {
 		lastFrameTime = t;
-		cat.style.backgroundPosition = `${-frame * FW}px 0`;
 		frame++;
 		if (frame >= current.frames) {            // end of this flipbook
+			if (DEMO) demoStep();                   // demo may queue the next move
 			if (queue.length) show(queue.shift());  // next step of the route
 			else if (current.loop) frame = 0;       // keep looping
 			else show(pose);                        // transition done → loop the state
 		}
+		draw();
 	}
 
 	// walking moves the cat and turns it at the edges
@@ -83,8 +90,13 @@ requestAnimationFrame(tick);
 // petting placeholder: click the cat and it sits
 cat.addEventListener('click', () => goTo('sit'));
 
-// demo: change mood every 6 seconds
-if (DEMO) {
-	const moods = ['sit', 'walk', 'sleep'];
-	setInterval(() => goTo(moods[Math.floor(Math.random() * moods.length)]), 6000);
+// demo: sit a few loops → stand up → sit back down → repeat
+// runs at the end of every flipbook, so moves never cut an animation short
+const DEMO_SIT_LOOPS = 3;
+let sitLoops = 0;
+function demoStep() {
+	if (currentName !== 'sit' || queue.length) return;
+	if (++sitLoops < DEMO_SIT_LOOPS) return;
+	sitLoops = 0;
+	queue = ['standUp', 'sit'];
 }
