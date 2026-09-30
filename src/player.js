@@ -58,7 +58,7 @@ function tick(t) {
 	}
 
 	// walking moves the cat and turns it at the edges
-	if (currentName === 'walk') {
+	if (currentName === 'walk' || (currentName === 'quack' && pose === 'walk')) {
 		x += dir * WALK_SPEED * dt;
 		const maxX = window.innerWidth - FW;
 		if (x > maxX) { x = maxX; dir = -1; }
@@ -81,9 +81,17 @@ show('sit');
 requestAnimationFrame(tick);
 
 // petting placeholder: click the cat and it sits
+function scheduleQuack() {
+	const delay = 8000 + Math.random() * 12000;
+	setTimeout(() => {
+		if (!queue.length && ['sit', 'walk'].includes(currentName)) show('quack');
+		scheduleQuack();
+	}, delay);
+}
 cat.addEventListener('click', () => goTo('sit'));
 
 // demo: change mood every 6 seconds
+scheduleQuack();
 if (DEMO) {
 	const moods = ['sit', 'walk', 'sleep'];
 	setInterval(() => goTo(moods[Math.floor(Math.random() * moods.length)]), 6000);

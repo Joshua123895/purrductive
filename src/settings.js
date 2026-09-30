@@ -13,8 +13,9 @@ const DEMO = true;            // cat changes mood on its own — set false later
 // --- every flipbook: file, number of frames, speed, loop or play-once ---
 // not drawn yet? leave it out — the cat will snap instead
 const ANIMS = {
-	sit:     { src: 'assets/cat/orange/sit.png',     frames: 6, fps: 4,  loop: true  },
-	// walk:    { src: 'assets/cat/orange/walk.png',    frames: 4, fps: 8,  loop: true  },
+	sit:     { src: 'assets/duck/white/sit.png',     frames: 6, fps: 8,  loop: true  },
+	walk:    { src: 'assets/duck/white/walk.png',    frames: 4, fps: 8,  loop: true  },
+	quack:   { src: 'assets/duck/white/quack.png',   frames: 3, fps: 8,  loop: false },
 	// sleep:   { src: 'assets/cat/orange/sleep.png',   frames: 2, fps: 2,  loop: true  },
 	// standUp: { src: 'assets/cat/orange/standup.png', frames: 3, fps: 10, loop: false },
 	// sitDown: { src: 'assets/cat/orange/sitdown.png', frames: 3, fps: 10, loop: false },
