@@ -15,7 +15,7 @@ const DEMO = true;            // cat changes mood on its own — set false later
 const ANIMS = {
 	// harusnya 'sit' cuma mau tes dulu
 	sit:     { src: 'assets/cat/orange/sit.png',     frames: 6, fps: 4,  loop: true  },
-	walk:    { src: 'assets/cat/orange/walkTest.png', frames: 8,  fps: 8,  loop: true  },
+	walk:    { src: 'assets/cat/orange/walk.png', frames: 8,  fps: 8,  loop: true  },
 	// sleep:   { src: 'assets/cat/orange/sleep.png',   frames: 2,  fps: 2,  loop: true  },
 	standUp: { src: 'assets/cat/orange/standUp.png', frames: 11, fps: 8,  loop: false },
 	// sitDown = standUp played backwards, until a real sitdown.png is drawn
