@@ -62,7 +62,7 @@ function tick(t) {
 		lastFrameTime = t;
 		frame++;
 		if (frame >= current.frames) {            // end of this flipbook
-			if (DEMO) demoStep();                   // demo may queue the next move
+			if (DEMO && !TEST_ANIM) demoStep();                   // demo may queue the next move
 			if (queue.length) show(queue.shift());  // next step of the route
 			else if (current.loop) frame = 0;       // keep looping
 			else show(pose);                        // transition done → loop the state
@@ -85,12 +85,12 @@ function goTo(target) {
 const sheets = Object.values(ANIMS).map((a) => Object.assign(new Image(), { src: a.src }));
 Promise.all(sheets.map((img) => img.decode().catch(() => {})))   // missing file? start anyway
 	.then(() => {
-		show('sit');
+		show(ANIMS[TEST_ANIM] ? TEST_ANIM : 'sit');   // test mode starts on the flipbook you want
 		requestAnimationFrame(tick);
 	});
 
 // petting placeholder: click the cat and it sits
-cat.addEventListener('click', () => goTo('sit'));
+cat.addEventListener('click', () => { if (!TEST_ANIM) goTo('sit'); });
 
 // demo: sit → standUp → walk → (snap) sit → repeat
 // runs at the end of every flipbook, so moves never cut an animation short
