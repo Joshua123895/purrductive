@@ -12,13 +12,12 @@ const DEMO = true;            // pet changes mood on its own — set false later
 
 // --- which pet, and what to test ---
 const PET = 'duck';          // 'cat' or 'duck'
-const TEST_ANIM = 'walk';     // loop only this flipbook (e.g. 'walk'); null = normal behaviour + demo
+const TEST_ANIM = null;    // loop only this flipbook (e.g. 'walk'); null = normal behaviour + demo
 
 // --- every flipbook: file, number of frames, speed, loop or play-once ---
 // not drawn yet? leave it out — the pet will snap instead
 const PETS = {
 	cat: {
-		// harusnya 'sit' cuma mau tes dulu
 		sit:     { src: 'assets/cat/orange/sit.png',     frames: 8,  fps: 8, loop: true  },
 		walk:    { src: 'assets/cat/orange/walk.png',    frames: 8,  fps: 8, loop: true  },
 		// sleep:   { src: 'assets/cat/orange/sleep.png',   frames: 2,  fps: 2,  loop: true  },
@@ -29,8 +28,9 @@ const PETS = {
 		// wakeUp:  { src: 'assets/cat/orange/wakeup.png',  frames: 4,  fps: 8,  loop: false },
 	},
 	duck: {
-		// sit:  { src: 'assets/duck/white/sit.png',  frames: 6, fps: 8, loop: true },   // 270px / 45
-		walk: { src: 'assets/duck/white/walk.png', frames: 6, fps: 8, loop: true },   // 270px / 45
+		sit:  { src: 'assets/duck/white/sit.png',  frames: 8, fps: 4, loop: true },
+		walk: { src: 'assets/duck/white/walk.png', frames: 6, fps: 8, loop: true },
+		standUp: { src: 'assets/duck/white/standUp.png', frames: 8, fps: 8, loop: false },
 		// quack.png is 153px wide (not a multiple of 45) — fix the sheet before enabling
 		// quack: { src: 'assets/duck/white/quack.png', frames: 3, fps: 8, loop: false },
 	},

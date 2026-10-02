@@ -94,7 +94,7 @@ cat.addEventListener('click', () => { if (!TEST_ANIM) goTo('sit'); });
 
 // demo: sit → standUp → walk → (snap) sit → repeat
 // runs at the end of every flipbook, so moves never cut an animation short
-const DEMO_LOOPS = { sit: 1, walk: 10 };   // how many loops of each before switching
+const DEMO_LOOPS = { sit: 3, walk: 5 };   // how many loops of each before switching
 let demoLoops = 0;
 function demoStep() {
 	if (queue.length || !DEMO_LOOPS[currentName]) return;   // busy, or mid-transition
